@@ -55,11 +55,16 @@ jobs:
 
     # This step runs the linter against the codebase
     # TODO: Replace the run block to use our preferred linter
-    - name: Lint with flake8
+    - name: Lint with ruff
       run: uvx ruff check
 
 
     # TODO: Add steps to run formatting steps and type checking
-    - name: Formatting
+    - name: Format with ruff
       run: uvx ruff format --check
+      
+    - name: sort imports
+      run: uvx isort . --check
+
+    - name: type checking
       run: uvx ty check
